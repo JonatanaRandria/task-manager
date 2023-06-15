@@ -15,8 +15,6 @@ const calculateTimeDifference = (server: Date, client: Date) => {
   const hours = timeDifference.hours;
   const second = timeDifference.seconds;
   const minutes = timeDifference.minutes;
-  console.log(client);
-
   return {
     day,
     hours,
@@ -75,8 +73,8 @@ export default function Home({ serverTime }: any) {
           <p>
             Time diff:{" "}
             <span className="serverTime">
-              {day.toString()} :{hour.toString()} : {minute.toString()} :{" "}
-              {second.toString()}{" "}
+              {day.toString()} jour : {hour.toString()} heures :
+              {minute.toString()} : minutes : {second.toString()} second{" "}
             </span>
           </p>
         </div>
