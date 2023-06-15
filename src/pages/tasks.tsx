@@ -54,7 +54,7 @@ const TaskManager = () => {
           <li key={task.id}>
             <input
               type="text"
-              value={task.title}
+              defaultValue={task.title}
               onChange={(e) =>
                 handleUpdateTask(task.id, {
                   title: e.target.value,
