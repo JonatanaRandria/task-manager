@@ -10,7 +10,8 @@ export interface Task {
 const TaskManager = () => {
   const createTaskRef = useRef<string>("");
   const tasks = useTaskManager((state) => state.tasks);
-  const { addTask, updateTask, deleteTask } = useTaskManager();
+  const { setSearch, search, addTask, updateTask, deleteTask } =
+    useTaskManager();
   const handleAddTask = () => {
     const title = createTaskRef.current.value;
     const newTask: Task = {
@@ -18,7 +19,6 @@ const TaskManager = () => {
       title,
       completed: false,
     };
-    console.log(title);
 
     addTask(newTask);
   };
@@ -32,10 +32,12 @@ const TaskManager = () => {
   };
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    createTaskRef.current = e.target.value;
+    setSearch(e.target.value);
   };
 
-  const filteredTasks = tasks;
+  const filteredTasks = tasks.filter((task: Task) =>
+    task.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div>
