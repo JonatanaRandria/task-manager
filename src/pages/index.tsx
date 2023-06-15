@@ -2,6 +2,8 @@ import DateDiff from "date-diff";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import dateFormat from "dateformat";
+var df = require("date-formatter");
 
 /**
   Calculates the time difference between the server time and client time.
@@ -66,7 +68,10 @@ export default function Home({ serverTime }: any) {
         <div>
           {/* Display here the server time (DD-MM-AAAA HH:mm)*/}
           <p>
-            Server time: <span className="serverTime">{serverTime}</span>
+            Server time:{" "}
+            <span className="serverTime">
+              {dateFormat(serverTime, "d-MM-yyyy HH:mm")}
+            </span>
           </p>
 
           {/* Display here the time difference between the server side and the client side */}
